@@ -1,0 +1,9 @@
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:OpenJWC/OpenJWC-web-frontend.git
+[submodule "backend"]
+	path = backend
+	url = git@github.com:OpenJWC/OpenJWC-webapi.git
+[submodule "crawler"]
+	path = crawler
+	url = git@github.com:OpenJWC/JwcCrawler.git
