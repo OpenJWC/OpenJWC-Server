@@ -68,7 +68,7 @@ services:
 [
   {
     "username": "Alice",
-    "password": Alice@12345
+    "password": "Alice@12345"
   },
   {
     "username":"Bob",
