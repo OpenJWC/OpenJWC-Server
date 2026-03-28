@@ -4,19 +4,35 @@ services:
     build: 
       context: .  
       dockerfile: ./backend/Dockerfile
-    container_name: edu_backend
+    image: openjwc-backend:v1.0
+    container_name: openjwc_backend
+    restart: always
+    volumes:
+      - ./backend/data:/app/data
+      - ./backend/logs:/app/logs
+      - ./backend/admins.json:/app/admins.json:ro
+    environment:
+      - TZ=Asia/Shanghai
+  crawler_worker:
+    build: 
+      context: .
+      dockerfile: ./backend/Dockerfile
+    image: openjwc-crawler:v1.0
+    container_name: crawler_worker
     restart: always
     volumes:
       - ./backend/data:/app/data
       - ./backend/logs:/app/logs
     environment:
-      - INIT_ADMIN_USER=admin
-      - INIT_ADMIN_PASS=Admin@123456
       - TZ=Asia/Shanghai
+    command: ["uv", "run", "python", "-m", "app.crawler_wrapper"]
+    depends_on:
+      - backend
   frontend:
     build: 
       context: ./frontend
-    container_name: edu_frontend
+    container_name: openjwc_frontend
+    image: openjwc-frontend:v1.0
     restart: always
     ports:
       - "8000:8000"
