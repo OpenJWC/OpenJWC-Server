@@ -30,7 +30,7 @@ services:
       - backend
   frontend:
     build: 
-      context: ./frontend
+      context: .
       dockerfile: frontend.Dockerfile
     container_name: openjwc_frontend
     image: openjwc-frontend:v1.0
