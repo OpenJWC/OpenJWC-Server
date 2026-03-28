@@ -3,7 +3,7 @@ services:
   backend:
     build: 
       context: .  
-      dockerfile: ./backend/Dockerfile
+      dockerfile: backend.Dockerfile
     image: openjwc-backend:v1.0
     container_name: openjwc_backend
     restart: always
@@ -16,7 +16,7 @@ services:
   crawler_worker:
     build: 
       context: .
-      dockerfile: ./backend/Dockerfile
+      dockerfile: backend.Dockerfile
     image: openjwc-crawler:v1.0
     container_name: crawler_worker
     restart: always
@@ -31,6 +31,7 @@ services:
   frontend:
     build: 
       context: ./frontend
+      dockerfile: frontend.Dockerfile
     container_name: openjwc_frontend
     image: openjwc-frontend:v1.0
     restart: always
