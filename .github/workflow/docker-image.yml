@@ -1,0 +1,32 @@
+name: Build and Export OpenJWC Images
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: 
+
+jobs:
+  build-and-export:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build images via Docker Compose
+        run: docker compose build
+
+      - name: Save Docker images to a single tar file
+        run: |
+          docker save \
+            openjwc-backend:v1.0 \
+            openjwc-crawler:v1.0 \
+            openjwc-frontend:v1.0 \
+            -o openjwc-images.tar
+      - name: Upload Docker images artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: openjwc-offline-images
+          path: openjwc-images.tar
+          retention-days: 7 
