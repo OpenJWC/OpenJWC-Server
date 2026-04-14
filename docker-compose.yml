@@ -4,7 +4,7 @@ services:
     build: 
       context: .  
       dockerfile: backend.Dockerfile
-    image: openjwc-backend:v1.0
+    image: openjwc-backend:v1.1
     container_name: openjwc_backend
     restart: always
     volumes:
@@ -17,7 +17,7 @@ services:
     build: 
       context: .
       dockerfile: backend.Dockerfile
-    image: openjwc-crawler:v1.0
+    image: openjwc-crawler:v1.1
     container_name: crawler_worker
     restart: always
     volumes:
@@ -33,7 +33,7 @@ services:
       context: .
       dockerfile: frontend.Dockerfile
     container_name: openjwc_frontend
-    image: openjwc-frontend:v1.0
+    image: openjwc-frontend:v1.1
     restart: always
     ports:
       - "8001:8001"
