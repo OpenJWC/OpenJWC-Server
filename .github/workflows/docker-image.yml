@@ -1,7 +1,7 @@
 name: Build and Export OpenJWC Images
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "refactor" ]
   workflow_dispatch: 
 
 jobs:
