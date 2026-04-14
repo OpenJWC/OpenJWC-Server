@@ -20,9 +20,9 @@ jobs:
       - name: Save Docker images to a single tar file
         run: |
           docker save \
-            openjwc-backend:v1.0 \
-            openjwc-crawler:v1.0 \
-            openjwc-frontend:v1.0 \
+            openjwc-backend:v1.1 \
+            openjwc-crawler:v1.1 \
+            openjwc-frontend:v1.1 \
             -o openjwc-images.tar
       - name: Upload Docker images artifact
         uses: actions/upload-artifact@v4
