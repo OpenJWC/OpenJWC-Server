@@ -25,7 +25,7 @@ services:
       - ./backend/logs:/app/logs
     environment:
       - TZ=Asia/Shanghai
-    command: ["uv", "run", "python", "-m", "app.crawler_wrapper"]
+    command: ["uv", "run", "python", "-m", "app.infrastructure.crawler.rust_crawler_wrapper"]
     depends_on:
       - backend
   frontend:
